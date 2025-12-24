@@ -18,7 +18,8 @@ class _ChatbotPageState extends State<ChatbotPage> {
   final List<Content> _history = [];
   
   // Using key from config
-  static const String _apiKey = AiConfig.apiKey; 
+
+  String get _apiKey => AiConfig.apiKey; 
   
   late final GenerativeModel _model;
   ChatSession? _chatSession;

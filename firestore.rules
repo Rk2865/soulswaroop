@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // User Data: Users can read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Subcollections (like chat_history)
+      match /{document=**} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+    
+    // Allow Admins to read everything (Conceptual - requires 'role' field on user custom claims or doc)
+    // For now, if you are getting permission denied in the Admin Panel, you might need temporarily looser rules
+    // or set up Custom Claims.
+    // match /{document=**} {
+    //   allow read, write: if request.auth != null && request.auth.token.admin == true;
+    // }
+  }
+}
