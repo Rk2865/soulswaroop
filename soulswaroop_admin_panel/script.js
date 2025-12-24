@@ -1,15 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Firebase Configuration ---
-    const firebaseConfig = {
-        apiKey: "AIzaSyB8-GsnMdyCmYVQWST5ht1RIg_U237ajAs",
-        authDomain: "soulswaroop-2b309.firebaseapp.com",
-        projectId: "soulswaroop-2b309",
-        storageBucket: "soulswaroop-2b309.firebasestorage.app",
-        messagingSenderId: "36165165084",
-        appId: "1:36165165084:web:9095c6a07b768ed12a7fd9",
-        measurementId: "G-C1WMDT83L2"
-    };
+    // Firebase Configuration is loaded from config.js
 
     // --- Initialize Firebase ---
     if (!firebase.apps.length) {

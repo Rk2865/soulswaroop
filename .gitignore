@@ -43,3 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Security
+.env
+soulswaroop_admin_panel/config.js

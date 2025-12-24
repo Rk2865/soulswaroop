@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -40,8 +41,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB8-GsnMdyCmYVQWST5ht1RIg_U237ajAs',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY']!,
     appId: '1:36165165084:web:f3c2d7e9cce6f41b2a7fd9',
     messagingSenderId: '36165165084',
     projectId: 'soulswaroop-2b309',
@@ -50,16 +51,16 @@ class DefaultFirebaseOptions {
     measurementId: 'G-QC46G9LQRQ',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAsFoaHLBXwTdSJGG6NesmXcJ1OSP5NQaE',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY']!,
     appId: '1:36165165084:android:5bd1c67470a7801b2a7fd9',
     messagingSenderId: '36165165084',
     projectId: 'soulswaroop-2b309',
     storageBucket: 'soulswaroop-2b309.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBBfO8YRy83vV26kEAezGJsszk8nncMDoU',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY']!,
     appId: '1:36165165084:ios:d880dec2cfedbe6c2a7fd9',
     messagingSenderId: '36165165084',
     projectId: 'soulswaroop-2b309',
@@ -67,8 +68,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.soulswaroop',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBBfO8YRy83vV26kEAezGJsszk8nncMDoU',
+  static FirebaseOptions macos = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY']!,
     appId: '1:36165165084:ios:d880dec2cfedbe6c2a7fd9',
     messagingSenderId: '36165165084',
     projectId: 'soulswaroop-2b309',
@@ -76,8 +77,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.soulswaroop',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyB8-GsnMdyCmYVQWST5ht1RIg_U237ajAs',
+  static FirebaseOptions windows = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY']!,
     appId: '1:36165165084:web:8aeba2b2214377fb2a7fd9',
     messagingSenderId: '36165165084',
     projectId: 'soulswaroop-2b309',
