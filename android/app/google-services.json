@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "36165165084",
+    "project_id": "soulswaroop-2b309",
+    "storage_bucket": "soulswaroop-2b309.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36165165084:android:5bd1c67470a7801b2a7fd9",
+        "android_client_info": {
+          "package_name": "com.example.soulswaroop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsFoaHLBXwTdSJGG6NesmXcJ1OSP5NQaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
