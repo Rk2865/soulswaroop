@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soulswaroop Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Icon Library -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Login Page -->
+    <div id="login-page">
+        <div class="login-container">
+            <h1>Admin Dashboard Login</h1>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button id="login-button">Login</button>
+            <p id="login-error"></p>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard-container" class="container" style="display: none;">
+        <!-- Sidebar -->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>SOULSWAROOP</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#dashboard" class="active"><span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#users"><span class="material-icons-sharp">person_outline</span>
+                    <h3>Users</h3>
+                </a>
+                <a href="#user-data"><span class="material-icons-sharp">perm_contact_calendar</span>
+                    <h3>User Data</h3>
+                </a>
+                <a href="#reminders"><span class="material-icons-sharp">notifications_active</span>
+                    <h3>Reminders</h3>
+                </a>
+                <a href="#routines"><span class="material-icons-sharp">checklist</span>
+                    <h3>Routines & Habits</h3>
+                </a>
+                <a href="#quizzes"><span class="material-icons-sharp">quiz</span>
+                    <h3>Quizzes</h3>
+                </a>
+                <a href="#ai-settings"><span class="material-icons-sharp">smart_toy</span>
+                    <h3>AI Settings</h3>
+                </a>
+                <a href="#notifications"><span class="material-icons-sharp">notifications</span>
+                    <h3>Notifications</h3>
+                </a>
+                <a href="#analytics"><span class="material-icons-sharp">insights</span>
+                    <h3>Analytics Report</h3>
+                </a>
+                <a href="#" id="logout-button"><span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main>
+            <section id="dashboard-section">
+                <h1>Dashboard</h1>
+                <div class="insights">
+                    <div class="card">
+                        <span class="material-icons-sharp">group</span>
+                        <div class="middle">
+                            <h3>Total Users</h3>
+                            <h1 id="total-users-stat">0</h1>
+                        </div>
+                        <small class="text-muted">All time</small>
+                    </div>
+                    <div class="card">
+                        <span class="material-icons-sharp">local_activity</span>
+                        <div class="middle">
+                            <h3>Active Users</h3>
+                            <h1 id="active-users-stat">0</h1>
+                        </div>
+                        <small class="text-muted">Last 7 Days</small>
+                    </div>
+                    <div class="card">
+                        <span class="material-icons-sharp">done_all</span>
+                        <div class="middle">
+                            <h3>Quizzes Completed</h3>
+                            <h1 id="quizzes-completed-stat">0</h1>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                </div>
+                <div class="analytics-chart">
+                    <h2>User App Usage</h2>
+                    <canvas id="app-usage-chart"></canvas>
+                </div>
+            </section>
+            <section id="users-section" style="display: none;">
+                <h1>User Management</h1>
+                <div class="user-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile No.</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-list-body"></tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="user-data-section" style="display: none;">
+                <h1>User Data</h1>
+                <div class="filters" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <select id="user-filter"
+                        style="padding: 10px; border-radius: var(--border-radius-1); border: 1px solid var(--color-info-light); background: var(--color-white); min-width: 200px;">
+                        <option value="all">All Users</option>
+                    </select>
+                    <select id="data-type-filter"
+                        style="padding: 10px; border-radius: var(--border-radius-1); border: 1px solid var(--color-info-light); background: var(--color-white); min-width: 200px;">
+                        <option value="all">All Data Types</option>
+                        <option value="MBTI Test">MBTI Test</option>
+                        <option value="Enneagram Test">Enneagram Test</option>
+                        <option value="Profession">Profession</option>
+                    </select>
+                </div>
+                <div class="user-data-grid" id="user-data-grid">
+                    <!-- Cards will be populated by script.js -->
+                </div>
+            </section>
+            <section id="reminders-section" style="display: none;">
+                <h1>Reminders Management</h1>
+                <div class="content-form">
+                    <div class="form-group">
+                        <label for="new-reminder-text">Add a New Reminder</label>
+                        <textarea id="new-reminder-text" rows="3" placeholder="Enter reminder text..."></textarea>
+                        <button id="add-reminder-button">Add Reminder</button>
+                    </div>
+                </div>
+                <div class="reminder-list">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2>Current Reminders</h2>
+                        <button id="delete-all-reminders-button" class="delete-btn"
+                            style="background-color: var(--color-danger);">Delete All</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reminder Text</th>
+                                <th>Added On</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reminders-list-body"></tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="routines-section" style="display: none;">
+                <h1>Routines & Habits</h1>
+            </section>
+            <section id="quizzes-section" style="display: none;">
+                <h1>Quizzes</h1>
+            </section>
+            <section id="ai-settings-section" style="display: none;">
+                <h1>AI Settings</h1>
+            </section>
+            <section id="notifications-section" style="display: none;">
+                <h1>Notifications</h1>
+            </section>
+            <section id="analytics-section" style="display: none;">
+                <h1>Analytics Report</h1>
+            </section>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">Super Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <!-- You can add a profile picture here if you want -->
+                    </div>
+                </div>
+            </div>
+            <!-- End of Top -->
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
